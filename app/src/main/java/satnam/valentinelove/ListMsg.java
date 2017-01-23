@@ -1,8 +1,11 @@
 package satnam.valentinelove;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +21,7 @@ import fragments.FragmentCommon;
 /**
  * Created by ss22493 on 21-01-2017.
  */
-public class ListMsg extends FragmentActivity {
+public class ListMsg extends AppCompatActivity {
 
     TabView tabView;
 
@@ -59,5 +62,43 @@ public class ListMsg extends FragmentActivity {
 
     private void initial() {
         tabView = (TabView) findViewById(R.id.tabView);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_item:
+                //
+                // animateButton();
+                Intent mIntent = new Intent(ListMsg.this, FavList.class);
+                startActivity(mIntent);
+                return true;
+
+            case android.R.id.home:
+                finish();
+                // close this activity and return to preview activity (if there is any)
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+
 }

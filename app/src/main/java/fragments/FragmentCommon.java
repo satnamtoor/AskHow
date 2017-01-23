@@ -5,10 +5,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import Adapter.MessageBaseAdapter;
 import Db.DBAssettsFolder;
 import satnam.valentinelove.R;
 
@@ -24,11 +25,14 @@ import satnam.valentinelove.R;
 public class FragmentCommon extends Fragment {
     //  TextView textView;
 
-    RecyclerView recycler_view;
+
+    ListView recycler_view;
     View view;
     DBAssettsFolder mAssettsFolder;
     String strTableName, strMessages;
     ArrayList<String> mStringArrayListMessages;
+    MessageBaseAdapter messagesAdapter;
+    //  private RecyclerView.LayoutManager mLayoutManager;
 
     public static FragmentCommon newInstance(String text) {
         FragmentCommon fragmentCommon = new FragmentCommon();
@@ -53,7 +57,10 @@ public class FragmentCommon extends Fragment {
     }
 
     private void initial(View mView) {
-        recycler_view = (RecyclerView) mView.findViewById(R.id.recycler_view);
+        recycler_view = (ListView) mView.findViewById(R.id.recycler_view);
+       /* recycler_view.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        recycler_view.setLayoutManager(mLayoutManager);*/
         mAssettsFolder = new DBAssettsFolder(getActivity());
         File database = getActivity().getDatabasePath(DBAssettsFolder.DATABASE_NAME);
         if (false == database.exists()) {
@@ -94,6 +101,7 @@ public class FragmentCommon extends Fragment {
 
 
     private void getMessagesData(String strTableName) {
+        mStringArrayListMessages = new ArrayList<String>();
         Cursor c = mAssettsFolder.getRoseMessages(strTableName);
 
         if (c != null && c.getCount() > 0) {
@@ -110,8 +118,9 @@ public class FragmentCommon extends Fragment {
             c.close();
 
         }
-        mViewPagerAdapter = new ViewPagerAdapter(this, mStringArrayList);
-        pager.setAdapter(mViewPagerAdapter);
+        messagesAdapter = new MessageBaseAdapter(getActivity(), mStringArrayListMessages);
+        recycler_view.setAdapter(messagesAdapter);
+        messagesAdapter.notifyDataSetChanged();
 
     }
 

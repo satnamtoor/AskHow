@@ -36,8 +36,9 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
-
+        if (mArrayListMessages.get(position).toString() != null) {
+            holder.txtMessages.setText(mArrayListMessages.get(position).toString());
+        }
     }
 
     @Override
@@ -55,5 +56,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
             imageBack = (ImageView) view.findViewById(R.id.imageBack);
         }
     }
+
 
 }

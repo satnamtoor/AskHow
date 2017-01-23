@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class DBAssettsFolder extends SQLiteOpenHelper {
     public static final String DATABASE_PATH = "/data/data/satnam.valentinelove/databases/";
     // Database Name
-    public static final String DATABASE_NAME = "valentine_weeks";
+    public static final String DATABASE_NAME = "valentine_weeks.db";
     // Contacts Table Columns names
     public static final String ROSE_ID = "id";
     public static final String ROSE_NAME = "msg";
@@ -48,7 +48,7 @@ public class DBAssettsFolder extends SQLiteOpenHelper {
         db = DatabaseHelper.getInstance(ctx)
                 .getReadableDatabase();
         Cursor c = null;
-        String sql = "SELECT  * FROM " + table;
+        String sql = "SELECT * FROM " + table;
         c = db.rawQuery(sql, null);
         return c;
     }

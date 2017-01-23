@@ -1,5 +1,6 @@
 package Db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -16,10 +17,17 @@ public class DatabaseMethod {
     public static final int DATABASE_VERSION = 1;
     public static final String LOHRI_ID = "ID";
     public static final String LOHRI_NAME = "Messages";
+    public static final String KEY_ID = "id";
+    public static final String KEY_EMP_ID = "empId";
+    public static final String FAV_ID = "id";
+    public static final String FAV_MSG_ID = "msg";
+    public static final String TABLE_FAV_RECORD = "CREATE TABLE  FAV_Records("
+            + "id integer PRIMARY KEY AUTOINCREMENT ,"
+            + "msg VARCHAR );";
     private static final String DB_PATH_SUFFIX = "/data/data/satnam.valentinelove/databases/";
+    private static final String TABLE_FAV_RECORDS = "FAV_Records";
     static Context mCtx;
     public SQLiteDatabase mSqLiteDatabase, mSqLiteDatabaseRead;
-
 
     /* public DatabaseMethod open() throws SQLException {
 
@@ -58,11 +66,6 @@ public class DatabaseMethod {
 
     }
 
-    public void openDatabase() throws SQLException {
-
-
-    }
-
     public boolean emptyFunriddles() {
         Cursor c = null;
         boolean empty = false;
@@ -79,6 +82,41 @@ public class DatabaseMethod {
         return empty;
 
     }
+
+    public long insertData(String msg) {
+        ContentValues mContentValues = new ContentValues();
+        mContentValues.put(FAV_MSG_ID, msg);
+        return mSqLiteDatabase.insert(TABLE_FAV_RECORDS, null, mContentValues);
+
+    }
+
+
+    public Cursor getFavData() {
+        Cursor c = null;
+        if (mSqLiteDatabase.isOpen()) {
+            String sql = "SELECT  * FROM FAV_Records";
+            c = mSqLiteDatabase.rawQuery(sql, null);
+        }
+        return c;
+    }
+
+    public boolean emptyFavTable() {
+        Cursor c = null;
+        boolean empty = false;
+        if (mSqLiteDatabase.isOpen()) {
+            c = mSqLiteDatabase.rawQuery(
+                    "SELECT COUNT(*) FROM FAV_Records", null);
+
+            if (c != null && c.moveToFirst()) {
+                empty = (c.getInt(0) == 0);
+            }
+
+            c.close();
+        }
+        return empty;
+
+    }
+
 
     public Cursor getFunriddlesData() {
         Cursor c = null;
