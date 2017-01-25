@@ -19,11 +19,12 @@ public class DatabaseMethod {
     public static final String LOHRI_NAME = "Messages";
     public static final String KEY_ID = "id";
     public static final String KEY_EMP_ID = "empId";
+
     public static final String FAV_ID = "id";
     public static final String FAV_MSG_ID = "msg";
     public static final String TABLE_FAV_RECORD = "CREATE TABLE  FAV_Records("
             + "id integer PRIMARY KEY AUTOINCREMENT ,"
-            + "msg VARCHAR );";
+            + "msg VARCHAR unique);";
     private static final String DB_PATH_SUFFIX = "/data/data/satnam.valentinelove/databases/";
     private static final String TABLE_FAV_RECORDS = "FAV_Records";
     static Context mCtx;
@@ -117,6 +118,18 @@ public class DatabaseMethod {
 
     }
 
+
+    public int deleteFav(int primaryKey) {
+        int c = 0;// null;
+        if (mSqLiteDatabase.isOpen()) {
+            String whereStr = "id =\"" + primaryKey + "\"";
+            String tableName = "FAV_Records";
+            c = mSqLiteDatabase.delete(tableName, whereStr, null);
+
+        }
+        return c;
+
+    }
 
     public Cursor getFunriddlesData() {
         Cursor c = null;

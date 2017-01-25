@@ -15,4 +15,12 @@
         android:layout_height="wrap_content"
         android:text="Hello World!" />
 
+
+    <Button
+        android:id="@+id/btnGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnClick"
+        android:text="Game!" />
+
 </RelativeLayout>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
+                android:layout_weight=".5">
+
+                <ImageView
+                    android:id="@+id/your_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
+                android:layout_weight=".5">
+
+                <ImageView
+
+                    android:id="@+id/part_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_layout"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="Your DP"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/imageBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:text="Partner DP"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/editYourName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_one"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Your Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="5dp" />
+
+
+        <EditText
+
+            android:id="@+id/editPartnerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editYourName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Partner Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="5dp" />
+
+
+    </RelativeLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnFloatNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="35dp"
+        android:src="@android:drawable/ic_media_next" />
+
+</android.support.design.widget.CoordinatorLayout>

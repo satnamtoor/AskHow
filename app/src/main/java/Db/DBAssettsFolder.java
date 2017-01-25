@@ -54,6 +54,34 @@ public class DBAssettsFolder extends SQLiteOpenHelper {
     }
 
 
+    public Cursor getRendomMessages(String table) {
+        db = DatabaseHelper.getInstance(ctx)
+                .getReadableDatabase();
+        Cursor c = null;
+        //String sql = "SELECT * FROM " + table;
+        //c = db.rawQuery(sql, null);
+        c = db.rawQuery("SELECT * FROM" + " " + table + " " + "ORDER BY RANDOM() LIMIT 1", null);
+        return c;
+    }
+
+
+    public boolean emptyTables(String tableName) {
+        Cursor c = null;
+        boolean empty = false;
+        if (db.isOpen()) {
+            c = db.rawQuery(
+                    "SELECT COUNT(*) FROM" + tableName, null);
+
+            if (c != null && c.moveToFirst()) {
+                empty = (c.getInt(0) == 0);
+            }
+
+            c.close();
+        }
+        return empty;
+
+    }
+
     public Cursor getProposeMessages() {
         db = DatabaseHelper.getInstance(ctx)
                 .getReadableDatabase();
