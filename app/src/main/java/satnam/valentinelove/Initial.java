@@ -1,5 +1,6 @@
 package satnam.valentinelove;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -9,8 +10,8 @@ import android.database.Cursor;
 import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -29,7 +30,7 @@ import LocalNotification.AlarmReceiver;
 import animation.MyBounceInterpolator;
 
 
-public class Initial extends AppCompatActivity implements View.OnClickListener {
+public class Initial extends Activity implements View.OnClickListener {
 
     StartAppAd startappad = new StartAppAd(this);
     Button btnClick, btnGame;
@@ -42,13 +43,20 @@ public class Initial extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         StartAppAd.showSplash(this, savedInstanceState,
                 new SplashConfig()
-                        .setTheme(SplashConfig.Theme.GLOOMY)
-                        .setLogo(R.mipmap.ic_launcher)
-                        .setAppName(getResources().getString(R.string.app_name))
-                //.setCustomScreen(R.layout.your_splash_screen_layout_id)
+                        .setTheme(SplashConfig.Theme.USER_DEFINED)
+                        //.setLogo(R.mipmap.logo)
+                        //.setAppName(getResources().getString(R.string.app_name))
+                        .setCustomScreen(R.layout.splash_screen)
         );
+        //   android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+
+
+/*        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
         setContentView(R.layout.initial);
 
         initial();
@@ -161,7 +169,11 @@ public class Initial extends AppCompatActivity implements View.OnClickListener {
        /* Button button = (Button)findViewById(R.id.play_button);
         button.startAnimation(myAnim);
         playSound();*/
-        btnClick.startAnimation(myAnim);
+        if (status.equalsIgnoreCase("msg")) {
+            btnClick.startAnimation(myAnim);
+        } else {
+            btnGame.startAnimation(myAnim);
+        }
         // Run button animation again after it finished
         myAnim.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -213,7 +225,11 @@ public class Initial extends AppCompatActivity implements View.OnClickListener {
 
         long futureInMillis = SystemClock.elapsedRealtime() + delay;
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+        // alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+
+        am.setRepeating(AlarmManager.RTC_WAKEUP, futureInMillis, 24 * 60 * 60 * 1000, pendingIntent);
+
+
     }
 
     private Notification getNotification(String content) {

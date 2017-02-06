@@ -12,7 +12,7 @@
         app:imageViewTextViewMargin="2dip"
         app:tab_imageViewHeight="30dip"
         app:tab_imageViewWidth="30dip"
-        app:tab_tabViewBackgroundColor="#0000ff"
+        app:tab_tabViewBackgroundColor="#FFFFFF"
         app:tab_tabViewDefaultPosition="1"
         app:tab_tabViewGravity="right"
         app:tab_tabViewHeight="52dip"

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@mipmap/splash">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -60,8 +61,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
+                android:background="@mipmap/red"
                 android:text="Your DP"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -71,8 +73,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
+                android:background="@mipmap/white"
                 android:text="Partner DP"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -82,6 +85,7 @@
         <EditText
             android:id="@+id/editYourName"
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content"
             android:layout_below="@+id/layout_one"
             android:layout_marginLeft="10dp"
@@ -90,11 +94,12 @@
             android:ems="10"
             android:hint="Your Name"
             android:inputType="textPersonName"
-            android:paddingLeft="5dp" />
+            android:paddingLeft="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
 
         <EditText
-
             android:id="@+id/editPartnerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -105,7 +110,9 @@
             android:ems="10"
             android:hint="Partner Name"
             android:inputType="textPersonName"
-            android:paddingLeft="5dp" />
+            android:paddingLeft="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
 
     </RelativeLayout>

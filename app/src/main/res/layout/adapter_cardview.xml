@@ -10,55 +10,87 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_margin="@dimen/card_margin"
+        android:layout_marginLeft="10dp"
         android:elevation="3dp"
-        card_view:cardCornerRadius="@dimen/card_album_radius">
+        card_view:cardCornerRadius="10dp">
 
         <RelativeLayout
+            android:id="@+id/rl_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageBack"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                android:scaleType="centerCrop" />
-
-            <Button
-                android:id="@+id/btnFav"
+            <RelativeLayout
+                android:id="@+id/rl_one"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fav" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageBack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:bottomLeftRadius="10dp"
+                    android:bottomRightRadius="10dp"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="centerCrop"
+                    android:topLeftRadius="10dp"
+                    android:topRightRadius="10dp" />
+
+                <Button
+                    android:id="@+id/btnFav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape"
+                    android:bottomLeftRadius="10dp"
+                    android:bottomRightRadius="10dp"
+                    android:text="Fav"
+                    android:textColor="@color/white"
+                    android:topLeftRadius="10dp"
+                    android:topRightRadius="10dp" />
 
 
-            <Button
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete"
-                android:visibility="gone" />
+                <Button
+                    android:id="@+id/btnDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape"
+                    android:bottomLeftRadius="10dp"
+                    android:bottomRightRadius="10dp"
+                    android:text="Delete"
+                    android:textColor="@color/white"
+                    android:topLeftRadius="10dp"
+                    android:topRightRadius="10dp"
+                    android:visibility="gone" />
 
-            <Button
-                android:id="@+id/btnShare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="Share" />
-
+                <Button
+                    android:id="@+id/btnShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/shape"
+                    android:bottomLeftRadius="10dp"
+                    android:bottomRightRadius="10dp"
+                    android:text="Share"
+                    android:textColor="@color/white"
+                    android:topLeftRadius="10dp"
+                    android:topRightRadius="10dp" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_one"
                 android:layout_centerInParent="true"
+                android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <TextView
+
                     android:id="@+id/txtMessages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/light_gray"
                     android:textSize="22sp" />
 
                 <TextView
